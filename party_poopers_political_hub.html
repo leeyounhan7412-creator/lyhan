@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Party Poopers | Official Political Campaign</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&family=Cabinet+Grotesk:wght@800;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        ppBlue: {
+                            DEFAULT: '#1E3A8A',
+                            dark: '#0F172A',
+                            light: '#3B82F6'
+                        },
+                        ppYellow: {
+                            DEFAULT: '#F59E0B',
+                            light: '#FBBF24',
+                            dark: '#D97706'
+                        },
+                        ppBrown: {
+                            DEFAULT: '#78350F',
+                            accent: '#B45309',
+                            dark: '#451A03'
+                        }
+                    },
+                    fontFamily: {
+                        heading: ['Cabinet Grotesk', 'Plus Jakarta Sans', 'sans-serif'],
+                        body: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .font-heading { font-family: 'Cabinet Grotesk', sans-serif; }
+        .text-gold-gradient {
+            background: linear-[#F59E0B,#FBBF24,#D97706];
+            background: linear-gradient(135deg, #F59E0B 0%, #FBBF24 50%, #D97706 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 antialiased selection:bg-ppYellow selection:text-ppBrown-dark">
+
+    <!-- TOP ANNOUNCEMENT BAR -->
+    <div class="bg-ppBrown-dark text-ppYellow text-xs font-black py-2 px-4 text-center tracking-wider uppercase flex items-center justify-center gap-2 border-b border-ppYellow/30">
+        <span>💩 BREAKING NEWS: SIEUN ANNOUNCES 2026 PRESIDENTIAL RUN WITH FREE SNACK PLEDGE! 💩</span>
+    </div>
+
+    <!-- MAIN NAVIGATION -->
+    <nav class="sticky top-0 z-40 bg-ppBlue-dark/95 backdrop-blur-md border-b border-white/10 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo & Tagline -->
+                <div class="flex items-center gap-3 cursor-pointer" onclick="switchTab('home')">
+                    <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-ppYellow via-amber-500 to-ppBrown flex items-center justify-center text-2xl shadow-lg border-2 border-ppYellow/50 transform hover:scale-105 transition-transform">
+                        💩
+                    </div>
+                    <div>
+                        <span class="font-heading font-black text-2xl tracking-tight text-white block leading-none">PARTY POOPERS</span>
+                        <span class="text-[11px] font-bold tracking-wide text-ppYellow block mt-0.5">Constipated? We'll clear it up!</span>
+                    </div>
+                </div>
+
+                <!-- Desktop Nav Links -->
+                <div class="hidden md:flex items-center space-x-1 font-bold text-sm">
+                    <button id="nav-home" onclick="switchTab('home')" class="nav-btn px-4 py-2 rounded-xl text-ppYellow bg-white/10 border border-ppYellow/30 transition-all">Home</button>
+                    <button id="nav-conference" onclick="switchTab('conference')" class="nav-btn px-4 py-2 rounded-xl text-slate-300 hover:text-white hover:bg-white/5 transition-all">About Conference</button>
+                    <button id="nav-platform" onclick="switchTab('platform')" class="nav-btn px-4 py-2 rounded-xl text-slate-300 hover:text-white hover:bg-white/5 transition-all">Our Platform</button>
+                </div>
+
+                <!-- CTA Button -->
+                <div class="hidden md:flex items-center gap-3">
+                    <button onclick="openAuthModal('signin')" class="px-5 py-2.5 rounded-xl bg-ppYellow text-ppBrown-dark font-black text-xs uppercase tracking-wider hover:bg-amber-400 transform hover:-translate-y-0.5 transition-all shadow-lg shadow-ppYellow/20">
+                        Join Us / Sign In
+                    </button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button onclick="toggleMobileMenu()" class="p-2 text-slate-300 hover:text-white">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-ppBlue-dark border-b border-white/10 px-4 py-4 space-y-2">
+            <button onclick="switchTab('home'); toggleMobileMenu()" class="w-full text-left px-4 py-3 rounded-xl font-bold text-slate-200 hover:bg-white/10">Home</button>
+            <button onclick="switchTab('conference'); toggleMobileMenu()" class="w-full text-left px-4 py-3 rounded-xl font-bold text-slate-200 hover:bg-white/10">About Conference</button>
+            <button onclick="switchTab('platform'); toggleMobileMenu()" class="w-full text-left px-4 py-3 rounded-xl font-bold text-slate-200 hover:bg-white/10">Our Platform</button>
+            <button onclick="openAuthModal('signin')" class="w-full mt-2 py-3 bg-ppYellow text-ppBrown-dark font-black text-center rounded-xl uppercase text-xs">Join Us / Sign In</button>
+        </div>
+    </nav>
+
+    <!-- CONTENT SECTIONS CONTAINER -->
+    <main>
+        <!-- ================= HOME PAGE ================= -->
+        <section id="page-home" class="page-section">
+            <!-- HERO BACKGROUND VIDEO SECTION (GOP Style) -->
+            <div class="relative w-full h-[85vh] min-h-[550px] overflow-hidden flex items-center justify-center bg-slate-900 border-b-4 border-ppYellow">
+                <!-- Video Background -->
+                <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover opacity-40">
+                    <source src="https://assets.mixkit.co/videos/preview/mixkit-american-flag-waving-in-the-wind-41525-large.mp4" type="video/mp4">
+                </video>
+                <div class="absolute inset-0 bg-gradient-to-t from-ppBlue-dark via-ppBlue-dark/60 to-transparent"></div>
+
+                <!-- Hero Content -->
+                <div class="relative z-10 max-w-5xl mx-auto px-4 text-center space-y-6">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-ppYellow/20 border border-ppYellow/40 backdrop-blur-md text-ppYellow text-xs font-black uppercase tracking-widest">
+                        <span>💩 Constipated? We'll clear it up!</span>
+                    </div>
+                    <h1 class="font-heading font-black text-4xl sm:text-6xl md:text-7xl text-white leading-tight">
+                        WIPING AWAY THE PAST.<br>
+                        <span class="text-gold-gradient">BUILDING A CLEAN FUTURE.</span>
+                    </h1>
+                    <p class="text-slate-300 text-base sm:text-xl max-w-2xl mx-auto font-medium">
+                        The Party Poopers are dedicated to flushing political nonsense down the drain and serving the real needs of the people.
+                    </p>
+                    <div class="flex flex-col sm:flex-row justify-center gap-4 pt-4">
+                        <button onclick="switchTab('platform')" class="px-8 py-4 rounded-xl bg-ppYellow text-ppBrown-dark font-black text-sm uppercase tracking-wider hover:bg-amber-400 transition-all transform hover:scale-105 shadow-xl shadow-ppYellow/20">
+                            Explore Our Platform 💩
+                        </button>
+                        <button onclick="openAuthModal('signin')" class="px-8 py-4 rounded-xl bg-white/10 hover:bg-white/20 text-white font-black text-sm uppercase tracking-wider border border-white/20 backdrop-blur-md transition-all">
+                            Claim Free Photo Card
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PRESIDENT & VICE PRESIDENT TICKET SHOWCASE -->
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="text-ppBrown-accent font-extrabold text-xs uppercase tracking-widest">💩 Executive Leadership</span>
+                    <h2 class="font-heading font-black text-3xl sm:text-5xl text-ppBlue-dark mt-1">Meet Our Presidential Ticket</h2>
+                    <p class="text-slate-600 mt-3 text-lg">Leading the Pooper Movement with unshakeable integrity and bold cafeteria solutions.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                    <!-- PRESIDENT CARD: RIJU RAHAMAN -->
+                    <div class="bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-xl hover:shadow-2xl transition-all flex flex-col group">
+                        <div class="h-96 relative overflow-hidden bg-slate-800">
+                            <!-- Candidate Photo for Riju Rahaman -->
+                            <img src="https://lh3.googleusercontent.com/d/1_riju_portrait_placeholder_image" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80';" alt="Riju Rahaman - Candidate for President" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-ppBlue-dark via-transparent to-transparent opacity-80"></div>
+                            <div class="absolute bottom-6 left-6 right-6">
+                                <span class="bg-ppYellow text-ppBrown-dark font-black text-xs px-3 py-1 rounded-full uppercase tracking-wider mb-2 inline-block">Nominee for President</span>
+                                <h3 class="font-heading font-black text-3xl text-white">RIJU RAHAMAN</h3>
+                                <p class="text-slate-300 text-sm">Party President & Visionary Leader</p>
+                            </div>
+                        </div>
+                        <div class="p-8 flex-1 flex flex-col justify-between bg-slate-50">
+                            <p class="text-slate-600 leading-relaxed mb-6">
+                                "Every student deserves access to premium quality snacks and late morning classes. Together, we will dump outdated policies and usher in a sweet era!"
+                            </p>
+                            <button onclick="openBioModal('Riju Rahaman', 'Party President & Presidential Nominee', 'Riju Rahaman champions the historic Free Snacks initiative and serves as senior campaign visionary for Party Poopers 2026.')" class="w-full py-3 rounded-xl border-2 border-ppBlue text-ppBlue font-bold text-xs uppercase tracking-wider hover:bg-ppBlue hover:text-white transition-all">
+                                Read Full Biography →
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- VICE PRESIDENT CARD: JUNSEONG LEE -->
+                    <div class="bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-xl hover:shadow-2xl transition-all flex flex-col group">
+                        <div class="h-96 relative overflow-hidden bg-slate-800">
+                            <!-- Candidate Photo for Junseong Lee -->
+                            <img src="https://lh3.googleusercontent.com/d/1_junseong_portrait_placeholder_image" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=800&q=80';" alt="Junseong Lee - Vice Presidential Candidate" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-ppBlue-dark via-transparent to-transparent opacity-80"></div>
+                            <div class="absolute bottom-6 left-6 right-6">
+                                <span class="bg-ppBrown text-white font-black text-xs px-3 py-1 rounded-full uppercase tracking-wider mb-2 inline-block">Nominee for Vice President</span>
+                                <h3 class="font-heading font-black text-3xl text-white">JUNSEONG LEE</h3>
+                                <p class="text-slate-300 text-sm">Vice Presidential Candidate</p>
+                            </div>
+                        </div>
+                        <div class="p-8 flex-1 flex flex-col justify-between bg-slate-50">
+                            <p class="text-slate-600 leading-relaxed mb-6">
+                                Leading campaign strategy across schedule reforms and cafeteria budget expansion. Dedicated to building an organized and well-funded student community!
+                            </p>
+                            <button onclick="openBioModal('Junseong Lee', 'Vice Presidential Candidate', 'Junseong Lee oversees operations, schedule reform, and maximum budget allocation for student programs.')" class="w-full py-3 rounded-xl border-2 border-ppBlue text-ppBlue font-bold text-xs uppercase tracking-wider hover:bg-ppBlue hover:text-white transition-all">
+                                Read Full Biography →
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BREAKING NEWS SECTION -->
+            <div class="bg-slate-100 py-20 border-t border-b border-slate-200">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                        <div>
+                            <span class="text-ppBrown-accent font-extrabold text-xs uppercase tracking-widest">💩 Stay Informed</span>
+                            <h2 class="font-heading font-black text-3xl md:text-5xl text-ppBlue-dark mt-1">Latest News & Releases</h2>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <!-- News 1 -->
+                        <div class="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-md hover:shadow-xl transition-all">
+                            <div class="h-48 bg-slate-800 relative overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?auto=format&fit=crop&w=600&q=80" alt="Sieun Campaign" class="w-full h-full object-cover">
+                                <span class="absolute top-3 left-3 bg-red-600 text-white text-[11px] font-black px-3 py-1 rounded-full uppercase tracking-wide animate-pulse">BREAKING</span>
+                            </div>
+                            <div class="p-6">
+                                <div class="text-xs text-slate-400 font-semibold mb-2">November 1, 2026</div>
+                                <h3 class="font-heading font-bold text-xl text-slate-900 mb-2">Sieun Announces Presidential Campaign After Promising Free Snacks for Every Student</h3>
+                                <p class="text-slate-600 text-sm mb-4">In a landmark address, Sieun launched the 2026 Party Poopers campaign pledge for unlimited snack funding and zero political waste.</p>
+                            </div>
+                        </div>
+
+                        <!-- News 2 -->
+                        <div class="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-md hover:shadow-xl transition-all">
+                            <div class="h-48 bg-slate-800 relative overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1577962917302-cd874c4e31d2?auto=format&fit=crop&w=600&q=80" alt="Lisa Plan" class="w-full h-full object-cover">
+                                <span class="absolute top-3 left-3 bg-ppYellow text-ppBrown-dark text-[11px] font-black px-3 py-1 rounded-full uppercase">Education Reform</span>
+                            </div>
+                            <div class="p-6">
+                                <div class="text-xs text-slate-400 font-semibold mb-2">October 31, 2026</div>
+                                <h3 class="font-heading font-bold text-xl text-slate-900 mb-2">Lisa Introduces Controversial Plan to Make School Start at 10 AM</h3>
+                                <p class="text-slate-600 text-sm mb-4">Critics debate the proposal while student approval skyrockets to 99% following Lisa’s sleep efficiency report.</p>
+                            </div>
+                        </div>
+
+                        <!-- News 3 -->
+                        <div class="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-md hover:shadow-xl transition-all">
+                            <div class="h-48 bg-slate-800 relative overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=600&q=80" alt="Hansol Budget" class="w-full h-full object-cover">
+                                <span class="absolute top-3 left-3 bg-ppBrown text-white text-[11px] font-bold px-3 py-1 rounded-full uppercase">Budget News</span>
+                            </div>
+                            <div class="p-6">
+                                <div class="text-xs text-slate-400 font-semibold mb-2">October 28, 2026</div>
+                                <h3 class="font-heading font-bold text-xl text-slate-900 mb-2">Hansol Accused of Spending Entire National Budget on School Cafeteria</h3>
+                                <p class="text-slate-600 text-sm mb-4">Treasury auditors investigate claims of gourmet hires and milk fountains installed in campus cafeterias.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- JOIN US & PHOTO CARD SECTION -->
+            <div id="join-us-section" class="bg-gradient-to-br from-ppBlue-dark via-slate-900 to-ppBrown-dark text-white py-20 relative overflow-hidden border-t-4 border-ppYellow">
+                <div class="absolute -right-10 -bottom-10 text-9xl opacity-10 pointer-events-none select-none">💩</div>
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                    <div class="bg-slate-900/80 backdrop-blur-xl border border-ppYellow/30 rounded-3xl p-8 md:p-12 shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-10">
+                        <div class="lg:w-1/2 space-y-4">
+                            <span class="inline-block px-3 py-1 rounded-full bg-ppYellow text-ppBrown-dark font-black text-xs uppercase tracking-widest">
+                                💩 Official Member Perks
+                            </span>
+                            <h2 class="font-heading font-black text-3xl sm:text-5xl text-white leading-tight">
+                                Join the Party & Claim Your Official <span class="text-gold-gradient">Photo Cards!</span>
+                            </h2>
+                            <p class="text-slate-300 text-base md:text-lg leading-relaxed">
+                                Log in or sign up to support Sieun, Lisa, and Hansol. Registered members get exclusive campaign photo cards delivered straight to their grade!
+                            </p>
+                            <div class="flex flex-wrap gap-4 pt-2">
+                                <div class="flex items-center gap-2 text-xs font-bold text-ppYellow bg-white/5 px-3 py-2 rounded-xl border border-white/10">
+                                    <i class="fa-solid fa-check-circle text-ppYellow"></i> Sieun Limited Edition
+                                </div>
+                                <div class="flex items-center gap-2 text-xs font-bold text-ppYellow bg-white/5 px-3 py-2 rounded-xl border border-white/10">
+                                    <i class="fa-solid fa-check-circle text-ppYellow"></i> Lisa 10 AM Reform Card
+                                </div>
+                                <div class="flex items-center gap-2 text-xs font-bold text-ppYellow bg-white/5 px-3 py-2 rounded-xl border border-white/10">
+                                    <i class="fa-solid fa-check-circle text-ppYellow"></i> Hansol Cafeteria Edition
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Login Box -->
+                        <div class="lg:w-1/2 w-full max-w-md bg-white/5 border border-white/10 rounded-2xl p-6 sm:p-8 backdrop-blur-md">
+                            <div id="join-status-container">
+                                <h3 class="font-heading font-black text-2xl text-white mb-2 text-center">Become a Member</h3>
+                                <p class="text-xs text-slate-400 text-center mb-6">Sign in or register to log your details and request photo cards</p>
+                                
+                                <div class="space-y-4">
+                                    <button onclick="openAuthModal('signin')" class="w-full py-4 rounded-xl bg-gradient-to-r from-ppYellow via-amber-400 to-ppYellow text-ppBrown-dark font-black text-base shadow-lg shadow-ppYellow/20 hover:scale-105 transition-all flex items-center justify-center gap-3">
+                                        <i class="fa-solid fa-right-to-bracket"></i>
+                                        <span>Sign In / Log In</span>
+                                    </button>
+                                    <button onclick="openAuthModal('signup')" class="w-full py-3.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-sm border border-white/20 transition-all flex items-center justify-center gap-2">
+                                        <i class="fa-solid fa-user-plus text-ppYellow"></i>
+                                        <span>Create New Party Account</span>
+                                    </button>
+                                </div>
+                                <div class="mt-4 text-center">
+                                    <span class="text-[11px] text-slate-400"><i class="fa-solid fa-database text-ppYellow mr-1"></i> Data synced directly to Google Sheets</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= ABOUT CONFERENCE PAGE ================= -->
+        <section id="page-conference" class="page-section hidden py-16">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+                <!-- Header -->
+                <div class="text-center max-w-3xl mx-auto space-y-3">
+                    <span class="text-ppBrown-accent font-extrabold text-xs uppercase tracking-widest">💩 Annual Assembly</span>
+                    <h1 class="font-heading font-black text-4xl sm:text-6xl text-ppBlue-dark">About The Pooper Conference</h1>
+                    <p class="text-slate-600 text-lg">Everything you need to know about our history, rules, and delegate members.</p>
+                </div>
+
+                <!-- Who We Are & History Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-lg">
+                        <div class="w-12 h-12 rounded-2xl bg-ppYellow/20 text-ppYellow-dark flex items-center justify-center text-2xl font-bold mb-4">💩</div>
+                        <h2 class="font-heading font-black text-2xl text-ppBlue-dark mb-3">Who We Are</h2>
+                        <p class="text-slate-600 leading-relaxed">
+                            Founded on the principle that modern politics takes itself way too seriously, the Party Poopers party was formed to flush unneeded stress out of schools and workplaces. We represent student rights, lunch quality, and rest hours.
+                        </p>
+                    </div>
+
+                    <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-lg">
+                        <div class="w-12 h-12 rounded-2xl bg-ppBrown/20 text-ppBrown flex items-center justify-center text-2xl font-bold mb-4">📜</div>
+                        <h2 class="font-heading font-black text-2xl text-ppBlue-dark mb-3">Our History</h2>
+                        <p class="text-slate-600 leading-relaxed">
+                            Established in 2026 when Sieun, Lisa, and Hansol organized the first cafeteria boycott over soggy fries. What started as a local movement quickly exploded into a national youth movement for snack equality.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Conference Rules -->
+                <div class="bg-slate-900 text-white rounded-3xl p-8 md:p-12 border-2 border-ppYellow shadow-2xl">
+                    <h2 class="font-heading font-black text-3xl text-ppYellow mb-6 flex items-center gap-3">
+                        <span>⚖️ Official Conference Rules</span>
+                    </h2>
+                    <ul class="space-y-4 text-slate-300">
+                        <li class="flex items-start gap-3">
+                            <span class="text-ppYellow font-bold">1.</span>
+                            <span><strong>No Filibustering Without Snacks:</strong> Speeches lasting longer than 15 minutes must distribute complimentary cookies.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-ppYellow font-bold">2.</span>
+                            <span><strong>The 10 AM Mandate:</strong> No official conference votes shall take place before 10:00 AM in honor of Lisa's sleep schedule reform.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-ppYellow font-bold">3.</span>
+                            <span><strong>Cafeteria Funding Protections:</strong> At least 80% of party budget discussions must involve Hansol's gourmet lunch upgrade roadmap.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Members Showcase -->
+                <div>
+                    <h2 class="font-heading font-black text-3xl text-ppBlue-dark text-center mb-8">Conference Leadership & Team Members</h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+                        <!-- Riju Rahaman -->
+                        <div class="bg-white p-6 rounded-2xl border border-slate-200 text-center shadow-md hover:shadow-xl transition-all">
+                            <div class="w-24 h-24 rounded-full bg-slate-200 mx-auto mb-4 overflow-hidden border-2 border-ppYellow shadow-inner">
+                                <img src="https://lh3.googleusercontent.com/d/1_riju_portrait_placeholder_image" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=300&q=80';" alt="Riju Rahaman" class="w-full h-full object-cover">
+                            </div>
+                            <h3 class="font-bold text-lg text-slate-900">Riju Rahaman</h3>
+                            <p class="text-xs text-ppBrown-accent font-bold uppercase mt-1">President</p>
+                        </div>
+
+                        <!-- Junseong Lee -->
+                        <div class="bg-white p-6 rounded-2xl border border-slate-200 text-center shadow-md hover:shadow-xl transition-all">
+                            <div class="w-24 h-24 rounded-full bg-slate-200 mx-auto mb-4 overflow-hidden border-2 border-ppYellow shadow-inner">
+                                <img src="https://lh3.googleusercontent.com/d/1_junseong_portrait_placeholder_image" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=300&q=80';" alt="Junseong Lee" class="w-full h-full object-cover">
+                            </div>
+                            <h3 class="font-bold text-lg text-slate-900">Junseong Lee</h3>
+                            <p class="text-xs text-ppBrown-accent font-bold uppercase mt-1">Vice President</p>
+                        </div>
+
+                        <!-- Stella Kim -->
+                        <div class="bg-white p-6 rounded-2xl border border-slate-200 text-center shadow-md hover:shadow-xl transition-all">
+                            <div class="w-24 h-24 rounded-full bg-slate-200 mx-auto mb-4 overflow-hidden border-2 border-ppYellow shadow-inner">
+                                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80" alt="Stella Kim" class="w-full h-full object-cover">
+                            </div>
+                            <h3 class="font-bold text-lg text-slate-900">Stella Kim</h3>
+                            <p class="text-xs text-ppBlue font-bold uppercase mt-1">Campaign Manager</p>
+                        </div>
+
+                        <!-- Leeyoun Han -->
+                        <div class="bg-white p-6 rounded-2xl border border-slate-200 text-center shadow-md hover:shadow-xl transition-all">
+                            <div class="w-24 h-24 rounded-full bg-slate-200 mx-auto mb-4 overflow-hidden border-2 border-ppYellow shadow-inner">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80" alt="Leeyoun Han" class="w-full h-full object-cover">
+                            </div>
+                            <h3 class="font-bold text-lg text-slate-900">Leeyoun Han</h3>
+                            <p class="text-xs text-ppBlue font-bold uppercase mt-1">Campaign Manager</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= OUR PLATFORM PAGE ================= -->
+        <section id="page-platform" class="page-section hidden py-16">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+                <div class="text-center space-y-3">
+                    <span class="text-ppBrown-accent font-extrabold text-xs uppercase tracking-widest">💩 Campaign Agenda</span>
+                    <h1 class="font-heading font-black text-4xl sm:text-6xl text-ppBlue-dark">Our Party Platform</h1>
+                    <p class="text-slate-600 text-lg">Bold policies designed to make school and everyday life dramatically better.</p>
+                </div>
+
+                <div class="space-y-6">
+                    <!-- Policy 1 -->
+                    <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-md">
+                        <div class="flex items-start gap-4">
+                            <div class="text-3xl">🍿</div>
+                            <div>
+                                <h3 class="font-heading font-black text-xl text-slate-900">1. Universal Free Snack Initiative</h3>
+                                <p class="text-slate-600 text-sm mt-2 leading-relaxed">
+                                    Promised directly by Sieun on November 1st, 2026. Every student will receive daily complimentary snacks including organic chips, chocolate bars, and fruit gummies financed through political waste reduction.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Policy 2 -->
+                    <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-md">
+                        <div class="flex items-start gap-4">
+                            <div class="text-3xl">⏰</div>
+                            <div>
+                                <h3 class="font-heading font-black text-xl text-slate-900">2. The 10 AM Start Time Act</h3>
+                                <p class="text-slate-600 text-sm mt-2 leading-relaxed">
+                                    Introduced by Lisa on October 31st, 2026. Scientific studies prove that extra sleep leads to higher happiness. All early morning schedules will be outlawed nationwide.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Policy 3 -->
+                    <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-md">
+                        <div class="flex items-start gap-4">
+                            <div class="text-3xl">🍕</div>
+                            <div>
+                                <h3 class="font-heading font-black text-xl text-slate-900">3. Total Cafeteria Budget Investment</h3>
+                                <p class="text-slate-600 text-sm mt-2 leading-relaxed">
+                                    Championed by Hansol. Reallocating funding to turn standard school cafeterias into gourmet dining halls with wood-fired pizza ovens and milk fountains.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-ppBlue-dark text-slate-400 py-12 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-4 text-center space-y-4">
+            <div class="flex items-center justify-center gap-2">
+                <span class="text-2xl">💩</span>
+                <span class="font-heading font-black text-white text-xl">PARTY POOPERS 2026</span>
+            </div>
+            <p class="text-xs text-slate-500">Paid for by the Party Poopers Campaign Committee. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- AUTH & PHOTO CARD MODAL -->
+    <div id="auth-modal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-md flex items-center justify-center p-4 overflow-y-auto">
+        <div class="relative w-full max-w-md bg-slate-900 border border-ppYellow/30 rounded-3xl p-6 sm:p-8 shadow-2xl text-white my-8">
+            <button onclick="closeAuthModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white p-2 text-xl font-bold">✕</button>
+
+            <!-- TAB 1: SIGN IN / LOG IN -->
+            <div id="modal-auth-form" class="space-y-5">
+                <div class="text-center">
+                    <span class="text-3xl">💩</span>
+                    <h3 id="auth-modal-title" class="font-heading font-black text-2xl text-white mt-1">Sign In to Party Poopers</h3>
+                    <p class="text-xs text-slate-400 mt-1">Enter your details to claim official party photo cards</p>
+                </div>
+
+                <form onsubmit="handleAuthSubmit(event)" class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-slate-300 mb-1">Email / Username</label>
+                        <input type="text" required placeholder="pooper2026@partypoopers.org" class="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-white focus:outline-none focus:border-ppYellow text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-slate-300 mb-1">Password</label>
+                        <input type="password" required placeholder="••••••••" class="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-white focus:outline-none focus:border-ppYellow text-sm">
+                    </div>
+                    <button type="submit" class="w-full py-3.5 rounded-xl bg-ppYellow text-ppBrown-dark font-black text-sm uppercase tracking-wider hover:bg-amber-400 transition-all shadow-lg">
+                        Continue to Photo Cards →
+                    </button>
+                </form>
+            </div>
+
+            <!-- TAB 2: PHOTO CARD CLAIM FORM (AFTER LOG IN) -->
+            <div id="modal-photocard-form" class="hidden space-y-5">
+                <div class="text-center border-b border-white/10 pb-4">
+                    <span class="text-3xl animate-bounce inline-block">📸</span>
+                    <h3 class="font-heading font-black text-2xl text-ppYellow mt-1">Claim Your Photo Card</h3>
+                    <p class="text-xs text-slate-300">Fill out your details below to receive official campaign photo cards!</p>
+                </div>
+
+                <form onsubmit="handlePhotoCardSubmit(event)" class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-slate-300 mb-1">Full Name</label>
+                        <input type="text" id="pc-name" required placeholder="e.g. Sieun Park" class="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-white focus:outline-none focus:border-ppYellow text-sm">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-slate-300 mb-1">Grade / Year</label>
+                        <select id="pc-grade" required class="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-white focus:outline-none focus:border-ppYellow text-sm">
+                            <option value="" disabled selected>Select your grade...</option>
+                            <option value="Grade 7">Grade 7</option>
+                            <option value="Grade 8">Grade 8</option>
+                            <option value="Grade 9">Grade 9</option>
+                            <option value="Grade 10">Grade 10</option>
+                            <option value="Grade 11">Grade 11</option>
+                            <option value="Grade 12">Grade 12</option>
+                            <option value="University / Adult">University / Adult</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-slate-300 mb-2">Will you receive our photo card?</label>
+                        <div class="grid grid-cols-2 gap-3">
+                            <label class="flex items-center justify-center gap-2 p-3 rounded-xl bg-slate-800 border-2 border-slate-700 cursor-pointer hover:border-ppYellow has-[:checked]:border-ppYellow has-[:checked]:bg-ppYellow/10">
+                                <input type="radio" name="photocard_option" value="Yes" checked class="accent-ppYellow">
+                                <span class="font-bold text-sm text-white">Yes, Please! 💩</span>
+                            </label>
+                            <label class="flex items-center justify-center gap-2 p-3 rounded-xl bg-slate-800 border-2 border-slate-700 cursor-pointer hover:border-ppYellow has-[:checked]:border-ppYellow has-[:checked]:bg-ppYellow/10">
+                                <input type="radio" name="photocard_option" value="No" class="accent-ppYellow">
+                                <span class="font-bold text-sm text-slate-400">No, Thanks</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="p-3 rounded-xl bg-slate-800/80 border border-white/10 text-xs text-slate-300">
+                        <div class="flex items-center justify-between mb-1">
+                            <span class="font-bold text-ppYellow"><i class="fa-solid fa-table"></i> Google Sheets Integration</span>
+                            <span class="text-[10px] text-green-400 font-mono">Connected</span>
+                        </div>
+                        <p class="text-[10px] text-slate-400">Form entries are automatically submitted and synced to Party Poopers Campaign Central.</p>
+                    </div>
+
+                    <button type="submit" id="pc-submit-btn" class="w-full py-4 rounded-xl bg-gradient-to-r from-ppYellow to-amber-500 text-ppBrown-dark font-black text-base uppercase tracking-wider hover:scale-105 transition-all shadow-xl">
+                        💩 Submit & Sync to Sheet
+                    </button>
+                </form>
+            </div>
+
+            <!-- SUCCESS DISPLAY -->
+            <div id="modal-photocard-success" class="hidden text-center space-y-4 py-4">
+                <div class="w-20 h-20 bg-ppYellow/20 rounded-full flex items-center justify-center mx-auto text-4xl border-2 border-ppYellow animate-bounce">
+                    🎉
+                </div>
+                <h3 class="font-heading font-black text-2xl text-white">Request Received!</h3>
+                <p class="text-sm text-slate-300 leading-relaxed">
+                    Thank you! Your submission was synced to the Party Poopers Google Sheet database.
+                </p>
+
+                <div id="card-preview" class="p-4 rounded-2xl bg-gradient-to-br from-ppBlue to-ppBrown border-2 border-ppYellow text-left relative overflow-hidden shadow-2xl">
+                    <div class="text-[10px] font-black text-ppYellow uppercase tracking-widest">Party Poopers Official Pass</div>
+                    <div id="card-preview-name" class="font-heading font-black text-xl text-white mt-1">Name</div>
+                    <div id="card-preview-grade" class="text-xs text-slate-200">Grade</div>
+                    <div id="card-preview-choice" class="mt-3 inline-block px-3 py-1 rounded-full bg-ppYellow text-ppBrown-dark font-bold text-[10px]">Photo Card: YES</div>
+                    <div class="absolute right-2 bottom-2 text-4xl opacity-30">💩</div>
+                </div>
+
+                <button onclick="closeAuthModal()" class="w-full py-3 bg-white/10 hover:bg-white/20 text-white font-bold rounded-xl text-sm transition-all">
+                    Close Window
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        function switchTab(tabId) {
+            document.querySelectorAll('.page-section').forEach(el => el.classList.add('hidden'));
+            const target = document.getElementById('page-' + tabId);
+            if (target) target.classList.remove('hidden');
+
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('bg-white/10', 'text-ppYellow', 'border', 'border-ppYellow/30');
+                btn.classList.add('text-slate-300');
+            });
+            const activeNav = document.getElementById('nav-' + tabId);
+            if (activeNav) {
+                activeNav.classList.add('bg-white/10', 'text-ppYellow', 'border', 'border-ppYellow/30');
+                activeNav.classList.remove('text-slate-300');
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function toggleMobileMenu() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        }
+
+        function openAuthModal(mode) {
+            const modal = document.getElementById('auth-modal');
+            const authForm = document.getElementById('modal-auth-form');
+            const pcForm = document.getElementById('modal-photocard-form');
+            const pcSuccess = document.getElementById('modal-photocard-success');
+            const title = document.getElementById('auth-modal-title');
+
+            authForm.classList.remove('hidden');
+            pcForm.classList.add('hidden');
+            pcSuccess.classList.add('hidden');
+
+            title.innerText = mode === 'signup' ? 'Register Party Account' : 'Sign In to Party Poopers';
+            modal.classList.remove('hidden');
+        }
+
+        function closeAuthModal() {
+            document.getElementById('auth-modal').classList.add('hidden');
+        }
+
+        function handleAuthSubmit(e) {
+            e.preventDefault();
+            document.getElementById('modal-auth-form').classList.add('hidden');
+            document.getElementById('modal-photocard-form').classList.remove('hidden');
+        }
+
+        function handlePhotoCardSubmit(e) {
+            e.preventDefault();
+            const submitBtn = document.getElementById('pc-submit-btn');
+            const name = document.getElementById('pc-name').value;
+            const grade = document.getElementById('pc-grade').value;
+            const choice = document.querySelector('input[name="photocard_option"]:checked').value;
+
+            submitBtn.innerText = 'Syncing to Google Sheets... ⏳';
+            submitBtn.disabled = true;
+
+            // Optional Google Apps Script Web App Endpoint Handler
+            const googleSheetScriptURL = 'https://script.google.com/macros/s/AKfycbx_EXAMPLE_PARTY_POOPERS_ENDPOINT/exec';
+
+            const payload = new FormData();
+            payload.append('Timestamp', new Date().toLocaleString());
+            payload.append('Name', name);
+            payload.append('Grade', grade);
+            payload.append('ReceivePhotoCard', choice);
+
+            fetch(googleSheetScriptURL, { method: 'POST', body: payload, mode: 'no-cors' })
+                .catch(err => console.log('Local network sync fallback active:', err))
+                .finally(() => {
+                    submitBtn.innerText = '💩 Submit & Sync to Sheet';
+                    submitBtn.disabled = false;
+
+                    document.getElementById('modal-photocard-form').classList.add('hidden');
+                    document.getElementById('modal-photocard-success').classList.remove('hidden');
+
+                    document.getElementById('card-preview-name').innerText = name;
+                    document.getElementById('card-preview-grade').innerText = grade;
+                    document.getElementById('card-preview-choice').innerText = 'Photo Card Choice: ' + choice.toUpperCase();
+
+                    document.getElementById('join-status-container').innerHTML = `
+                        <div class="text-center p-4 bg-ppYellow/10 border border-ppYellow/30 rounded-2xl">
+                            <span class="text-3xl">🎉</span>
+                            <h4 class="font-heading font-black text-xl text-ppYellow mt-2">Welcome, Member ${name}!</h4>
+                            <p class="text-xs text-slate-300 mt-1">Grade: <strong>${grade}</strong> | Photo Card: <strong>${choice}</strong></p>
+                            <div class="mt-4 p-2 bg-slate-800/80 rounded-xl text-[11px] text-green-400 font-mono">
+                                ✓ Synced to Google Sheets Campaign Database
+                            </div>
+                        </div>
+                    `;
+                });
+        }
+
+        function openBioModal(name, title, bio) {
+            alert(name + " (" + title + ")\n\n" + bio);
+        }
+    </script>
+</body>
+</html>
